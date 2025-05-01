@@ -1,22 +1,20 @@
 from typing import List, Tuple, Dict, Set
 import copy
 
-# Define tower names
 TOWERS = ['A', 'B', 'C']
 
-# Move represented as (from_tower, to_tower)
 Move = Tuple[str, str]
 
 class HanoiSolver:
     def __init__(self, initial_stack: List[int]):
         self.initial_state = {
-            'A': initial_stack[::-1],  # reverse to make top at the end
+            'A': initial_stack[::-1],
             'B': [],
             'C': []
         }
         self.goal_state = {
             'A': [],
-            'B': sorted(initial_stack)[::-1],  # goal is sorted smallest at top (end of list)
+            'B': sorted(initial_stack)[::-1],
             'C': []
         }
         self.num_disks = len(initial_stack)
@@ -78,7 +76,7 @@ class HanoiSolver:
 
 # === Sample Run ===
 if __name__ == "__main__":
-    initial_disks = [3, 4, 0, 2, 1]  # Disk IDs, with top = index 0
+    initial_disks = [3, 4, 0, 2, 1]
     solver = HanoiSolver(initial_disks)
     moves = solver.solve()
     print("\nSteps to solve:")
